@@ -10,5 +10,4 @@ Dieses Programm ist eine erweiterte Version des klassischen „Schere, Stein, Pa
 
 **Technologie:**  
 - Programmiersprache: JavaScript  
-- GUI: Web-Oberfläche (HTML/CSS/JS)  
-- Datenbank: SQLite oder JSON zur Speicherung der Spielerstatistiken  
+- GUI: Web-Oberfläche (HTML/CSS/JS)
