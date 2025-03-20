@@ -9,21 +9,27 @@
     <body>
         <h1 id="Überschrift">Schere Stein Papier</h1>
         <p>Wähle Schere, Stein oder Papier und deine Wette</p>
+        <a id="Währung">0</a>
+        <a id="final">Gewinn</a><br>
+        <button class="obereknöpfe" onclick="auszahlung()">auszahlung</button>
+        <button class="obereknöpfe" onclick="kontoauszahlung()">konto</button>
+        <div id="image-ergebnis"></div>
+        <div id="image-wahl"></div>
         <div>
-            <a id="Währung">0</a><br><br>
-            <a id="Ergebnis"></a><br><br>
-            <input id ="wahl" type="radio" value="Schere">Schere<br>
-            <input id ="wahl" type="radio" value="Stein">Stein<br>
-            <input id ="wahl" type="radio" value="Papier">Papier<br><br>
+            <div class="untereknöpfe" id="Auswahl">
+                <button onclick="auswahl(0)">Schere</button>
+                <button onclick="auswahl(1)">Stein</button>
+                <button onclick="auswahl(2)">Papier</button>
+            </div>
         </div>
-        <div id="aufladung">
-            <input id = "button5" type="button" value="5€">
-            <input id = "button10" type="button" value="10€">
-            <input id = "button25" type="button" value="25€">
-            <input id = "button50" type="button" value="50€">
-            <input id = "button100" type="button" value="100€"><br><br>
+        <div class="untereknöpfe" id="aufladung">
+            <button onclick="aufladen(5)">5€</button>
+            <button onclick="aufladen(10)">10€</button>
+            <button onclick="aufladen(25)">25€</button>
+            <button onclick="aufladen(50)">50€</button>
+            <button onclick="aufladen(100)">100€</button>
         </div>
-        <input id = "button" type="button" value="start"><br><br>
+        <button onclick="slot()" >start</button>
         <script src="script.js"></script>
     </body>
 </html>
