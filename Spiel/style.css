@@ -5,17 +5,12 @@ body{
     margin: 0;
     padding: 0;
     text-align: center;
+    color: #DEB992;
   }
   h1{
     font-size: 440%;
-    color: #DEB992;
     position: relative;
     text-align: center;
     top: 50px;
   }
-  a,p{
-    color: #DEB992;
-  }
-  .wahl{
-    color: #DEB992;
-  }
+  
