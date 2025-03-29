@@ -6,7 +6,8 @@ Dieses Programm ist eine erweiterte Version des klassischen „Schere, Stein, Pa
 **Funktionen:**  
 - **Spielmechanik:** Klassische „Schere, Stein, Papier“-Regeln  
 - **Wettoption:** Spieler setzen virtuelle Währung 
-- **Einsatzverwaltung:** Gewinne und Verluste werden automatisch berechnet 
+- **Einsatzverwaltung:** Gewinne und Verluste werden automatisch berechnet
+- **Daten:** Guthaben wird gespeichert und kann gelöscht werden 
 
 **Technologie:**  
 - Programmiersprache: JavaScript  
