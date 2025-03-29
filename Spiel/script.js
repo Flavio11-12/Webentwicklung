@@ -3,6 +3,7 @@ const Auswahlknöpfe = document.getElementById('Auswahl');
 const final = document.getElementById('final');
 const Währung_anzeige = document.getElementById('Währung');
 const Ergebnis_anzeige = document.getElementById('image-ergebnis');
+const Auszahlung_input = document.getElementById('auszahlung_input');
 const Wahl = document.getElementById('image-wahl');
 let finalIndex;
 var Ergebnis;
@@ -10,6 +11,8 @@ var ausgesuchtesbild;
 var index = 0;
 var Währung = 0;
 var konto = 0;
+Ergebnis_anzeige.innerHTML = `<img src="${bilder[0]}" width="100">`;
+Wahl.innerHTML = `<img src="${bilder[0]}" width="100">`;
 
 function aufladen(i){
     let index = 0;
@@ -71,7 +74,7 @@ function auszahlung(){
     Währung_anzeige.innerHTML = Währung + "€";
     konto += Währung;
     alert("Du hast " + Währung + "€ ausgezahlt bekommen");
-    Währung = 0;
+    Währung = Währung - Auszahlung_input;
     Währung_anzeige.innerHTML = Währung + "€";
 }
 

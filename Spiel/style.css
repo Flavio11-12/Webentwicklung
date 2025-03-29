@@ -1,10 +1,10 @@
 /* Allgemeine Stile */
 body {
-    background-color: #051622;
+    background-color: #fec65b;
     background-size: cover;
     font-family: "Poppins", sans-serif;
     text-align: center;
-    color: #DEB992;
+    color: #fb6342;
     margin: 0;
     padding: 0;
 }
@@ -28,10 +28,11 @@ p {
 
 /* Bildcontainer */
 #image-ergebnis, #image-wahl {
-    max-width: 80%;
+    max-width: 35%;
     height: auto;
     display: block;
     margin: 20px auto;
+    border: 2px solid black;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
@@ -48,10 +49,9 @@ p {
 button {
     font-size: 1.5rem;
     text-align: center;
-    background-color: #DEB992;
+    background-color: #fb6342;
     border: none;
     padding: 12px 25px;
-    border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -90,4 +90,8 @@ a:hover {
     display: block;
     margin-bottom: 1em;
     font-size: 1.2rem;
+}
+
+p{
+    color: #05624d;
 }

@@ -7,12 +7,18 @@
     </head>
     
     <body>
-        <h1 id="Überschrift">Schere Stein Papier</h1>
+        <div id="Kopfzeile">
+            <img src="Bilder/logo.jpg" width="100">
+            <h1 id="Überschrift">Schere Stein Papier</h1>
+            <p>info</p>
+        </div>
+        
         <p>Wähle Schere, Stein oder Papier und deine Wette</p>
         <a id="Währung">0</a>
-        <a id="final">Gewinn</a><br>
-        <button class="obereknöpfe" onclick="auszahlung()">auszahlung</button>
-        <button class="obereknöpfe" onclick="kontoauszahlung()">konto</button>
+        <a id="final">Gewinn</a><br>´
+        <input id="auszahlung_input"></input>
+        <button class="obereknöpfe" onclick="auszahlung()">Auszahlung</button>
+        <button class="obereknöpfe" onclick="kontoauszahlung()">Konto</button>
         <div id="image-ergebnis"></div>
         <div id="image-wahl"></div>
         <div>
@@ -29,7 +35,7 @@
             <button onclick="aufladen(50)">50€</button>
             <button onclick="aufladen(100)">100€</button>
         </div>
-        <button onclick="slot()" >start</button>
+        <button onclick="slot()" >Start</button>
         <script src="script.js"></script>
     </body>
 </html>
