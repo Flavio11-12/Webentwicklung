@@ -1,97 +1,179 @@
 /* Allgemeine Stile */
 body {
-    background-color: #fec65b;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: "Poppins", sans-serif;
     text-align: center;
-    color: #fb6342;
+    color: #EAEAEA;
     margin: 0;
     padding: 0;
+}
+
+/* Kopfzeile */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 15px 50px;
+    background: #051622;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.header-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    color: #FFD700;
+    text-transform: uppercase;
+}
+.header-logo {
+    font-size: 2rem;
+    color: #00FFFF;
+    text-shadow: 0 0 10px #00FFFF;
+    font-weight: bold;
+}
+
+.account-container {
+    position: relative;
+    display: inline-block;
+}
+
+.account-button {
+    font-size: 1.5rem;
+    background: transparent;
+    border: 2px solid #FFD700;
+    color: #FFD700;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.account-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: #203a43;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 15px;
+    min-width: 200px;
+    z-index: 100;
+}
+
+.account-container:hover .account-menu {
+    display: block;
+}
+
+.account-menu p {
+    font-size: 1.2rem;
+    margin: 5px 0;
+}
+
+/* Aufladung */
+.aufladung-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
 /* Überschriften */
 h1 {
     font-size: 4rem;
-    text-align: center;
     margin-top: 20px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    color: #00FFFF;
+    text-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF;
 }
 
 p {
     font-size: 1.5rem;
-    text-align: center;
     max-width: 800px;
     margin: 10px auto;
     line-height: 1.6;
 }
 
 /* Bildcontainer */
-#image-ergebnis, #image-wahl {
-    max-width: 35%;
-    height: auto;
-    display: block;
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
     margin: 20px auto;
-    border: 2px solid black;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Währung-Anzeige */
+#image-ergebnis, #image-wahl {
+    max-width: 40%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+/* Währungs-Anzeige */
 #Währung {
     font-size: 2rem;
-    text-align: center;
     font-weight: bold;
     margin: 20px 0;
+    color: #FFD700;
 }
 
 /* Allgemeine Button-Stile */
 button {
     font-size: 1.5rem;
-    text-align: center;
-    background-color: #fb6342;
-    border: none;
+    background: transparent;
+    border: 2px solid #00FFFF;
+    color: #00FFFF;
     padding: 12px 25px;
+    border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
 }
 
 /* Button-Hover-Effekt */
 button:hover {
-    background-color: #051622;
-    color: #DEB992;
+    background: #00FFFF;
+    color: #051622;
     transform: scale(1.05);
+    box-shadow: 0 0 20px #00FFFF;
 }
 
-/* Knopfgruppe */
+/* Knopfgruppen */
 .untereknöpfe {
     margin-top: 3em;
     margin-bottom: 2em;
-    text-align: center;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
+}
+
+button {
+    min-width: 150px;
 }
 
 /* Links */
 a {
     text-decoration: none;
-    color: #DEB992;
     font-weight: bold;
     transition: color 0.3s ease-in-out;
+    color: #FFD700;
 }
 
 a:hover {
-    color: #ffffff;
+    color: #FFFFFF;
 }
 
 #final {
     display: block;
     margin-bottom: 1em;
-    font-size: 1.2rem;
-}
-
-p{
-    color: #05624d;
+    font-size: 1.5rem;
+    color: #FF4500;
+    text-shadow: 0 0 10px #FF4500;
 }

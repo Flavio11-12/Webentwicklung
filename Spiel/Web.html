@@ -7,20 +7,32 @@
     </head>
     
     <body>
-        <div id="Kopfzeile">
-            <img src="Bilder/logo.jpg" width="100">
-            <h1 id="Überschrift">Schere Stein Papier</h1>
-            <p>info</p>
+        <header class="header">
+            <div class="header-logo">🪨✂️📜</div>
+            <div class="header-title">Schere Stein Papier</div>
+            <div class="account-container">
+                <button class="account-button">Mein Konto ▼</button>
+                <div class="account-menu">
+                    <p>Guthaben: <span id="Währung">0€</span></p>
+                    <div class="aufladung-container">
+                        <button onclick="aufladen(5)">5€</button>
+                        <button onclick="aufladen(10)">10€</button>
+                        <button onclick="aufladen(25)">25€</button>
+                        <button onclick="aufladen(50)">50€</button>
+                        <button onclick="aufladen(100)">100€</button>
+                    </div>
+                    <button class="obereknöpfe" onclick="auszahlung()">Auszahlung</button>
+                    <button class="obereknöpfe" onclick="kontoauszahlung()">Konto</button>
+                </div>
+            </div>
+        </header>
+        <a id="Währung">0</a>
+        <a id="final">Gewinn</a>
+        <div class="image-container">
+            <div id="image-ergebnis"></div>
+            <div id="image-wahl"></div>
         </div>
         
-        <p>Wähle Schere, Stein oder Papier und deine Wette</p>
-        <a id="Währung">0</a>
-        <a id="final">Gewinn</a><br>´
-        <input id="auszahlung_input"></input>
-        <button class="obereknöpfe" onclick="auszahlung()">Auszahlung</button>
-        <button class="obereknöpfe" onclick="kontoauszahlung()">Konto</button>
-        <div id="image-ergebnis"></div>
-        <div id="image-wahl"></div>
         <div>
             <div class="untereknöpfe" id="Auswahl">
                 <button onclick="auswahl(0)">Schere</button>
