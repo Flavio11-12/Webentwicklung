@@ -14,9 +14,10 @@
             <div class="account-container">
                 <button class="account-button">Mein Konto ▼</button>
                 <div class="account-menu">
-                    <input>
-                    <input text="Passwort">
-                    <p>Guthaben: <span id="Währung">0€</span></p>
+                    <input id="email" placeholder="E-mail">
+                    <input id="passwort" placeholder="Passwort">
+                    <button onclick="login()">Einloggen</button>
+                    <p>Guthaben: <a class="Währung">0€</a></p>
                     <div class="aufladung-container">
                         <button onclick="aufladen(5)">5€</button>
                         <button onclick="aufladen(10)">10€</button>
@@ -29,11 +30,11 @@
                 </div>
             </div>
         </header>
-        <a id="Währung">0</a>
+        <a id="Währung">0€</a>
         <a id="final">Gewinn</a>
         <div class="image-container">
-            <div id="image-ergebnis"></div>
             <div id="image-wahl"></div>
+            <div id="image-ergebnis"></div>
         </div>
         
         <div>
