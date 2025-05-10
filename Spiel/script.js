@@ -14,10 +14,26 @@ var konto = 0;
 Ergebnis_anzeige.innerHTML = `<img src="${bilder[0]}" width="100">`;
 Wahl.innerHTML = `<img src="${bilder[0]}" width="100">`;
 
+const gespeicherteDaten = JSON.parse(localStorage.getItem("spielstand"));
+
+if(gespeicherteDaten){
+    Währung = gespeicherteDaten.guthaben;
+    konto = gespeicherteDaten.konto;
+    Währung_anzeige.innerHTML = Währung + "€";
+}
+function speichereSpielstand(){
+    const spielstand = {
+        guthaben: Währung,
+        konto: konto
+    };
+    localStorage.setItem("spielstand", JSON.stringify(spielstand));
+}
+
 function aufladen(i){
     let index = 0;
     Währung += i;
     Währung_anzeige.innerHTML = Währung + "€";
+    speichereSpielstand();
 }
 function auswahl(i){
     ausgesuchtesbild = i;
@@ -43,7 +59,7 @@ function slot() {
         Auswahlknöpfe.style.display = "block";
         final.style.display = "block";
     }, 2000); 
-    
+    speichereSpielstand();
 }
 
 function Ergebnis(i){
@@ -76,8 +92,18 @@ function auszahlung(){
     alert("Du hast " + Währung + "€ ausgezahlt bekommen");
     Währung = Währung - Auszahlung_input;
     Währung_anzeige.innerHTML = Währung + "€";
+    speichereSpielstand();
 }
 
 function kontoauszahlung(){
     alert("Dein Konto hat " + konto + "€");
+    speichereSpielstand();
+}
+
+function resetSpielstand(){
+    localStorage.removeItem("spielstand");
+    Währung = 0;
+    konto = 0;
+    Währung_anzeige.innerHTML = "0€";
+    alert("Spielstand wurde zurückgesetzt");
 }
