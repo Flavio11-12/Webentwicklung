@@ -1,20 +1,6 @@
 {
     "benutzer": {
       "name": "Spieler1",
-      "konto": 0,
-      "guthaben": 0
-    },
-    "spiel": {
-      "optionen": [
-        { "name": "Schere", "bild": "Bilder/schere.jpg" },
-        { "name": "Stein", "bild": "Bilder/TheRock.jpeg" },
-        { "name": "Papier", "bild": "Bilder/Papier.jpg" }
-      ],
-      "letzteAuswahl": null,
-      "letztesErgebnis": null
-    },
-    "einstellungen": {
-      "sprache": "de",
-      "währung": "€"
+      "konto": 0
     }
   }
