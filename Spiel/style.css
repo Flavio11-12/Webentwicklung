@@ -1,4 +1,5 @@
-body {
+
+  body {
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     background-size: cover;
     background-repeat: no-repeat;
@@ -88,6 +89,7 @@ h1 {
     text-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF;
 }
 
+
 p {
     font-size: 1.5rem;
     max-width: 800px;
@@ -110,7 +112,7 @@ p {
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
 }
 
-#Währung {
+#WettgeldAnzeige {
     font-size: 2rem;
     font-weight: bold;
     margin: 20px 0;
@@ -156,14 +158,37 @@ a {
     color: #FFD700;
 }
 
-a:hover {
-    color: #FFFFFF;
-}
-
 #final {
     display: block;
     margin-bottom: 1em;
     font-size: 1.5rem;
     color: #FF4500;
     text-shadow: 0 0 10px #FF4500;
+}
+
+
+@media (max-width: 1000px) {
+    .header-title{
+      font-size: 1.5rem;
+    }
+    .header-logo {
+        font-size: 1.5rem;
+    }
+    button{
+        font-size: 1rem;
+    }
+    .account-button{
+        font-size: 1rem;
+    }
+}
+@media (max-width: 700px) {
+    .header-title{
+        font-size: 1rem;
+    }
+    .account-button{
+        font-size: 0.7rem;
+    }
+    button{
+        font-size: 0.7rem;
+    }
 }

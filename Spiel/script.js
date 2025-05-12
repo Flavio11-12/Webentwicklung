@@ -1,109 +1,116 @@
-const bilder = ["Bilder/schere.jpg", "Bilder/TheRock.jpeg", "Bilder/Papier.jpg"];
-const Auswahlknöpfe = document.getElementById('Auswahl');
-const final = document.getElementById('final');
-const Währung_anzeige = document.getElementById('Währung');
-const Ergebnis_anzeige = document.getElementById('image-ergebnis');
-const Auszahlung_input = document.getElementById('auszahlung_input');
-const Wahl = document.getElementById('image-wahl');
-let finalIndex;
-var Ergebnis;
-var ausgesuchtesbild;
-var index = 0;
-var Währung = 0;
-var konto = 0;
-Ergebnis_anzeige.innerHTML = `<img src="${bilder[0]}" width="100">`;
-Wahl.innerHTML = `<img src="${bilder[0]}" width="100">`;
+const bildPfadListe = ["Bilder/schere.jpg", "Bilder/TheRock.jpeg", "Bilder/Papier.jpg"];
 
+const auswahlButtonsContainer = document.getElementById('Auswahl');
+const spielErgebnisText = document.getElementById('final');
+const einsatzAnzeige = document.getElementById('WettgeldAnzeige');
+const kontoAnzeige = document.getElementById('KontoAnzeige');
+const zufallsBildAnzeige = document.getElementById('image-ergebnis');
+const auszahlungsBetragInput = document.getElementById('auszahlung_input');
+const benutzerWahlBildAnzeige = document.getElementById('image-wahl');
+
+let benutzerWahlIndex = 0;
+let zufallsErgebnisIndex = 0;
+let bildIndexAnimation = 0;
+
+let kontoStand = 0;
+let einsatzGesetzt = 0;
+
+zufallsBildAnzeige.innerHTML = `<img src="${bildPfadListe[0]}" width="100">`;
+benutzerWahlBildAnzeige.innerHTML = `<img src="${bildPfadListe[0]}" width="100">`;
+
+// Lade gespeicherte Spielstände
 const gespeicherteDaten = JSON.parse(localStorage.getItem("spielstand"));
-
-if(gespeicherteDaten){
-    Währung = gespeicherteDaten.guthaben;
-    konto = gespeicherteDaten.konto;
-    Währung_anzeige.innerHTML = Währung + "€";
+if (gespeicherteDaten) {
+    kontoStand = gespeicherteDaten.konto;
 }
-function speichereSpielstand(){
+aktualisiereAnzeige();
+
+function speichereSpielstand() {
     const spielstand = {
-        guthaben: Währung,
-        konto: konto
+        konto: kontoStand
     };
     localStorage.setItem("spielstand", JSON.stringify(spielstand));
 }
 
-function aufladen(i){
-    let index = 0;
-    Währung += i;
-    Währung_anzeige.innerHTML = Währung + "€";
-    speichereSpielstand();
+function aktualisiereAnzeige() {
+    kontoAnzeige.innerHTML = kontoStand + "€";
+    einsatzAnzeige.innerHTML = einsatzGesetzt + "€";
 }
-function auswahl(i){
-    ausgesuchtesbild = i;
-    Wahl.innerHTML = `<img src="${bilder[i]}" width="100">`;
-}
-function slot() {
-    if(Währung <= 0){
-        alert("Du hast nicht genug Geld");
+
+function einsatzSetzen(betrag) {
+    if (kontoStand < betrag) {
+        alert("Nicht genug Guthaben auf dem Konto.");
         return;
     }
-    Auswahlknöpfe.style.display = "none";
-    final.style.display = "none";
-    let interval = setInterval(() => {
-        Ergebnis_anzeige.innerHTML = `<img src="${bilder[index]}" width="100">`;
-        index = (index + 1) % bilder.length;
+    einsatzGesetzt += betrag;
+    kontoStand -= betrag;
+    aktualisiereAnzeige();
+    speichereSpielstand();
+}
+
+function kontoAufladen(betrag) {
+    kontoStand += betrag;
+    aktualisiereAnzeige();
+    speichereSpielstand();
+}
+
+function benutzerWählt(optionIndex) {
+    benutzerWahlIndex = optionIndex;
+    benutzerWahlBildAnzeige.innerHTML = `<img src="${bildPfadListe[optionIndex]}" width="100">`;
+}
+
+function spielStarten() {
+    if (einsatzGesetzt <= 0) {
+        alert("Bitte setze einen Einsatz, bevor du spielst.");
+        return;
+    }
+
+    auswahlButtonsContainer.style.display = "none";
+    spielErgebnisText.style.display = "none";
+
+    let animation = setInterval(() => {
+        zufallsBildAnzeige.innerHTML = `<img src="${bildPfadListe[bildIndexAnimation]}" width="100">`;
+        bildIndexAnimation = (bildIndexAnimation + 1) % bildPfadListe.length;
     }, 100);
 
     setTimeout(() => {
-        clearInterval(interval);
-        finalIndex = Math.floor(Math.random() * bilder.length);
-        Ergebnis_anzeige.innerHTML = `<img src="${bilder[finalIndex]}" alt="Ergebnis" width="100">`;
-        Ergebnis();
-        Auswahlknöpfe.style.display = "block";
-        final.style.display = "block";
-    }, 2000); 
-    speichereSpielstand();
+        clearInterval(animation);
+        zufallsErgebnisIndex = Math.floor(Math.random() * bildPfadListe.length);
+        zufallsBildAnzeige.innerHTML = `<img src="${bildPfadListe[zufallsErgebnisIndex]}" width="100">`;
+        spielAuswerten();
+        auswahlButtonsContainer.style.display = "block";
+        spielErgebnisText.style.display = "block";
+        aktualisiereAnzeige();
+        speichereSpielstand();
+    }, 2000);
 }
 
-function Ergebnis(i){
+function spielAuswerten() {
     // 0 = Schere, 1 = Stein, 2 = Papier
-    // 0 > 2, 1 > 0, 2 > 1
-    if(ausgesuchtesbild == 0 && finalIndex == 2){       // Schere > Papier
-        final.innerHTML =  "Gewonnen";
-        aufladen(Währung);
-    }else if(ausgesuchtesbild == 1 && finalIndex == 0){     // Stein > Schere
-        final.innerHTML =  "Gewonnen";
-        aufladen(Währung);
-    }else if(ausgesuchtesbild == 2 && finalIndex == 1){     // Papier > Stein
-        final.innerHTML =  "Gewonnen";
-        aufladen(Währung);
-    }else if(ausgesuchtesbild == finalIndex){
-        final.innerHTML = "Unentschieden";
-    }else{
-        final.innerHTML ="Verloren";
-        aufladen(-Währung);
+    let gewinn = false;
+
+    if (
+        (benutzerWahlIndex === 0 && zufallsErgebnisIndex === 2) || // Schere > Papier
+        (benutzerWahlIndex === 1 && zufallsErgebnisIndex === 0) || // Stein > Schere
+        (benutzerWahlIndex === 2 && zufallsErgebnisIndex === 1)    // Papier > Stein
+    ) {
+        gewinn = true;
+        spielErgebnisText.innerHTML = "Gewonnen!";
+        kontoStand += einsatzGesetzt * 2;
+    } else if (benutzerWahlIndex === zufallsErgebnisIndex) {
+        spielErgebnisText.innerHTML = "Unentschieden!";
+        kontoStand += einsatzGesetzt;
+    } else {
+        spielErgebnisText.innerHTML = "Verloren!";
     }
-}
-function auszahlung(){
-    if(Währung <= 0){
-        alert("Du hast nicht genug Geld");
-        return;
-    }
-   
-    Währung_anzeige.innerHTML = Währung + "€";
-    konto += Währung;
-    alert("Du hast " + Währung + "€ ausgezahlt bekommen");
-    Währung = Währung - Auszahlung_input;
-    Währung_anzeige.innerHTML = Währung + "€";
-    speichereSpielstand();
+
+    einsatzGesetzt = 0;
 }
 
-function kontoauszahlung(){
-    alert("Dein Konto hat " + konto + "€");
-    speichereSpielstand();
-}
-
-function resetSpielstand(){
+function spielstandZurücksetzen() {
     localStorage.removeItem("spielstand");
-    Währung = 0;
-    konto = 0;
-    Währung_anzeige.innerHTML = "0€";
-    alert("Spielstand wurde zurückgesetzt");
+    kontoStand = 0;
+    einsatzGesetzt = 0;
+    aktualisiereAnzeige();
+    alert("Spielstand wurde zurückgesetzt.");
 }

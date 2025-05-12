@@ -12,25 +12,22 @@
             <div class="header-logo">🪨✂️📜</div>
             <div class="header-title">Schere Stein Papier</div>
             <div class="account-container">
-                <button class="account-button">Mein Konto ▼</button>
+                <button class="account-button">Mein Konto: <a id="KontoAnzeige">0€</a>▼</button>
                 <div class="account-menu">
                     <input id="email" placeholder="E-mail">
                     <input id="passwort" placeholder="Passwort">
                     <button onclick="login()">Einloggen</button>
-                    <p>Guthaben: <a class="Währung">0€</a></p>
                     <div class="aufladung-container">
-                        <button onclick="aufladen(5)">5€</button>
-                        <button onclick="aufladen(10)">10€</button>
-                        <button onclick="aufladen(25)">25€</button>
-                        <button onclick="aufladen(50)">50€</button>
-                        <button onclick="aufladen(100)">100€</button>
+                        <button onclick="kontoAufladen(5)">5€</button>
+                        <button onclick="kontoAufladen(10)">10€</button>
+                        <button onclick="kontoAufladen(25)">25€</button>
+                        <button onclick="kontoAufladen(50)">50€</button>
+                        <button onclick="kontoAufladen(100)">100€</button>
                     </div>
-                    <button class="obereknöpfe" onclick="auszahlung()">Auszahlung</button>
-                    <button class="obereknöpfe" onclick="kontoauszahlung()">Konto</button>
                 </div>
             </div>
         </header>
-        <a id="Währung">0€</a>
+        <a id="WettgeldAnzeige">0€</a>
         <a id="final">Gewinn</a>
         <div class="image-container">
             <div id="image-wahl"></div>
@@ -39,19 +36,19 @@
         
         <div>
             <div class="untereknöpfe" id="Auswahl">
-                <button onclick="auswahl(0)">Schere</button>
-                <button onclick="auswahl(1)">Stein</button>
-                <button onclick="auswahl(2)">Papier</button>
+                <button onclick="benutzerWählt(0)">Schere</button>
+                <button onclick="benutzerWählt(1)">Stein</button>
+                <button onclick="benutzerWählt(2)">Papier</button>
             </div>
         </div>
         <div class="untereknöpfe" id="aufladung">
-            <button onclick="aufladen(5)">5€</button>
-            <button onclick="aufladen(10)">10€</button>
-            <button onclick="aufladen(25)">25€</button>
-            <button onclick="aufladen(50)">50€</button>
-            <button onclick="aufladen(100)">100€</button>
+            <button onclick="einsatzSetzen(5)">5€</button>
+            <button onclick="einsatzSetzen(10)">10€</button>
+            <button onclick="einsatzSetzen(25)">25€</button>
+            <button onclick="einsatzSetzen(50)">50€</button>
+            <button onclick="einsatzSetzen(100)">100€</button>
         </div>
-        <button onclick="slot()" >Start</button>
+        <button onclick="spielStarten()" >Start</button>
         <script src="script.js"></script>
     </body>
 </html>
