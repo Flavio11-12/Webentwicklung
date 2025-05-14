@@ -27,28 +27,41 @@
                 </div>
             </div>
         </header>
-        <a id="WettgeldAnzeige">0€</a>
-        <a id="final">Gewinn</a>
-        <div class="image-container">
-            <div id="image-wahl"></div>
-            <div id="image-ergebnis"></div>
+        <div class="linkes-panel">
+            <h2>Regeln:</h2>
+            <a>Um spielen zu können müssen sie Geld aufladen und ein gewünschten Geldbetrag Wetten</a>
+            <p><a id="Heraustechen">Gewonnen:</a> Das Gewettete Geld wird verdoppelt</p>
+            <p><a id="Heraustechen">Unentschieden:</a> Das Gewettete Geld wird zurüchgegeben</p>
+            <p><a id="Heraustechen">Verloren:</a> Das Gewettete Geld wird verloren</p>
         </div>
-        
-        <div>
-            <div class="untereknöpfe" id="Auswahl">
-                <button onclick="benutzerWählt(0)">Schere</button>
-                <button onclick="benutzerWählt(1)">Stein</button>
-                <button onclick="benutzerWählt(2)">Papier</button>
+        <div class="rechtes-panel">
+            <a>Verlauf: <p id="Verlauf"></p></a>
+        </div>
+
+        <div id="Main">
+            <a id="WettgeldAnzeige">0€</a>
+            <a id="final">Gewinn</a>
+            <div class="image-container">
+                <div id="image-wahl"></div>
+                <div id="image-ergebnis"></div>
             </div>
+            <div>
+                <div class="untereknöpfe" id="Auswahl">
+                    <button onclick="benutzerWählt(0)">Schere</button>
+                    <button onclick="benutzerWählt(1)">Stein</button>
+                    <button onclick="benutzerWählt(2)">Papier</button>
+                </div>
+            </div>
+            <div class="untereknöpfe" id="aufladung">
+                <button onclick="einsatzSetzen(5)">5€</button>
+                <button onclick="einsatzSetzen(10)">10€</button>
+                <button onclick="einsatzSetzen(25)">25€</button>
+                <button onclick="einsatzSetzen(50)">50€</button>
+                <button onclick="einsatzSetzen(100)">100€</button>
+            </div>
+            <button onclick="spielStarten()" >Start</button>
         </div>
-        <div class="untereknöpfe" id="aufladung">
-            <button onclick="einsatzSetzen(5)">5€</button>
-            <button onclick="einsatzSetzen(10)">10€</button>
-            <button onclick="einsatzSetzen(25)">25€</button>
-            <button onclick="einsatzSetzen(50)">50€</button>
-            <button onclick="einsatzSetzen(100)">100€</button>
-        </div>
-        <button onclick="spielStarten()" >Start</button>
+       
         <script src="script.js"></script>
     </body>
 </html>

@@ -7,11 +7,13 @@ const kontoAnzeige = document.getElementById('KontoAnzeige');
 const zufallsBildAnzeige = document.getElementById('image-ergebnis');
 const auszahlungsBetragInput = document.getElementById('auszahlung_input');
 const benutzerWahlBildAnzeige = document.getElementById('image-wahl');
+const verlauf = document.getElementById('Verlauf');
 
 let benutzerWahlIndex = 0;
 let zufallsErgebnisIndex = 0;
 let bildIndexAnimation = 0;
 
+let verlaufstand = "";
 let kontoStand = 0;
 let einsatzGesetzt = 0;
 
@@ -22,12 +24,15 @@ benutzerWahlBildAnzeige.innerHTML = `<img src="${bildPfadListe[0]}" width="100">
 const gespeicherteDaten = JSON.parse(localStorage.getItem("spielstand"));
 if (gespeicherteDaten) {
     kontoStand = gespeicherteDaten.konto;
+    verlaufstand = gespeicherteDaten.verlaufe;
 }
 aktualisiereAnzeige();
+aktualisiereVerlauf();
 
 function speichereSpielstand() {
     const spielstand = {
-        konto: kontoStand
+        konto: kontoStand,
+        verlaufe: verlaufstand
     };
     localStorage.setItem("spielstand", JSON.stringify(spielstand));
 }
@@ -35,6 +40,10 @@ function speichereSpielstand() {
 function aktualisiereAnzeige() {
     kontoAnzeige.innerHTML = kontoStand + "€";
     einsatzAnzeige.innerHTML = einsatzGesetzt + "€";
+}
+
+function aktualisiereVerlauf() {
+    verlauf.innerHTML += verlaufstand;
 }
 
 function einsatzSetzen(betrag) {
@@ -51,6 +60,12 @@ function einsatzSetzen(betrag) {
 function kontoAufladen(betrag) {
     kontoStand += betrag;
     aktualisiereAnzeige();
+    speichereSpielstand();
+}
+
+function Spielverlauf(auswertung, spielstand){
+    verlaufstand += auswertung + " " + spielstand +  "<br>";
+    verlauf.innerHTML = verlaufstand;
     speichereSpielstand();
 }
 
@@ -97,11 +112,14 @@ function spielAuswerten() {
         gewinn = true;
         spielErgebnisText.innerHTML = "Gewonnen!";
         kontoStand += einsatzGesetzt * 2;
+        Spielverlauf(einsatzGesetzt * 2, spielErgebnisText.innerHTML);
     } else if (benutzerWahlIndex === zufallsErgebnisIndex) {
         spielErgebnisText.innerHTML = "Unentschieden!";
         kontoStand += einsatzGesetzt;
+        Spielverlauf(einsatzGesetzt, spielErgebnisText.innerHTML);
     } else {
         spielErgebnisText.innerHTML = "Verloren!";
+        Spielverlauf(einsatzGesetzt, spielErgebnisText.innerHTML);
     }
 
     einsatzGesetzt = 0;

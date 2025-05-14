@@ -1,5 +1,5 @@
 
-  body {
+body {
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     background-size: cover;
     background-repeat: no-repeat;
@@ -9,6 +9,16 @@
     color: #EAEAEA;
     margin: 0;
     padding: 0;
+}
+
+#Main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    width: auto;
+    height: auto;
+    text-align: center;
 }
 
 .header {
@@ -164,6 +174,44 @@ a {
     font-size: 1.5rem;
     color: #FF4500;
     text-shadow: 0 0 10px #FF4500;
+}
+
+.rechtes-panel {
+    position: fixed;
+    right: 2rem;
+    top: 10rem;
+    width: 10rem;
+    background: #051622;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+.linkes-panel {
+    position: fixed;
+    left: 2rem;
+    top: 10rem;
+    width: 10rem;
+    background: #051622;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+p{
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 1.5rem 0;
+    color: #FFD700;
+}
+
+#Heraustechen, h2{
+    color: #ff0000;
+}
+
+#Main{
+    width: auto;         /* Die Breite des Containers passt sich dem Inhalt an */
+    height: auto
 }
 
 

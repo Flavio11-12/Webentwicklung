@@ -1,6 +1,7 @@
 {
     "benutzer": {
       "name": "Spieler1",
-      "konto": 0
+      "konto": 0,
+      "verlaufe": ""
     }
   }
