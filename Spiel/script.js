@@ -1,3 +1,5 @@
+
+
 const bildPfadListe = ["Bilder/schere.jpg", "Bilder/TheRock.jpeg", "Bilder/Papier.jpg"];
 
 const auswahlButtonsContainer = document.getElementById('Auswahl');
