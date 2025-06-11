@@ -14,9 +14,11 @@
             <div class="account-container">
                 <button class="account-button">Mein Konto: <a id="KontoAnzeige">0€</a>▼</button>
                 <div class="account-menu">
-                    <input id="email" placeholder="E-mail">
-                    <input id="passwort" placeholder="Passwort">
-                    <button onclick="login()">Einloggen</button>
+                    <form id="loginForm">
+                        <input type="text" id="username" placeholder="Benutzername" required>
+                        <input type="password" id="password" placeholder="Passwort" required>
+                        <button type="submit">Anmelden</button>
+                      </form>
                     <div class="aufladung-container">
                         <button onclick="kontoAufladen(5)">5€</button>
                         <button onclick="kontoAufladen(10)">10€</button>
