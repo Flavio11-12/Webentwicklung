@@ -9,26 +9,48 @@
     
     <body>
         <header class="header">
-            <div class="header-logo">🪨✂️📜</div>
-            <div class="header-title">Schere Stein Papier</div>
-            <div class="account-container">
-                <button class="account-button">Mein Konto: <a id="KontoAnzeige">0€</a>▼</button>
-                <div class="account-menu">
-                    <form id="loginForm">
-                        <input type="text" id="username" placeholder="Benutzername" required>
-                        <input type="password" id="password" placeholder="Passwort" required>
-                        <button type="submit">Anmelden</button>
-                      </form>
-                    <div class="aufladung-container">
-                        <button onclick="kontoAufladen(5)">5€</button>
-                        <button onclick="kontoAufladen(10)">10€</button>
-                        <button onclick="kontoAufladen(25)">25€</button>
-                        <button onclick="kontoAufladen(50)">50€</button>
-                        <button onclick="kontoAufladen(100)">100€</button>
-                    </div>
-                </div>
+            <div class="header-left">
+              <div class="header-logo">🪨✂️📜</div>
             </div>
-        </header>
+          
+            <div class="header-title">Schere Stein Papier</div>
+          
+            <div class="header-right">
+              <div class="Account-container">
+                <button class="account-button">👤▼</button>
+                <div class="account-menu">
+                  <form id="loginForm">
+                    <input id="loginName" type="text" placeholder="Benutzername" required>
+                    <input id="loginPasswort" type="password" placeholder="Passwort" required>
+                    <button type="submit">Anmelden</button>
+                    <a onclick="LoginSwitch()">Kein Account? Registriere dich hier!</a>
+                  </form>
+                  <form id="RegistrierenForm" style="display: none;">
+                    <input id="RegistrierenName" type="text" placeholder="Benutzername" required>
+                    <input id="RegistrierenPasswort1" type="password" placeholder="Passwort" required>
+                    <input id="RegistrierenPasswort2" type="password" placeholder="Passwort wiederholen" required>
+                    <button type="submit">Registrieren</button>
+                    <a onclick="LoginSwitch()">Du hast schon ein Account? Melde dich hier an!</a>
+                  </form>
+                </div>
+              </div>
+          
+              <div class="Konto-container">
+                <button class="Konto-button">Mein Konto: <a id="KontoAnzeige">0€</a>▼</button>
+                <div class="Konto-menu">
+                  <div class="aufladung-container">
+                    <button onclick="kontoAufladen(5)">5€</button>
+                    <button onclick="kontoAufladen(10)">10€</button>
+                    <button onclick="kontoAufladen(25)">25€</button>
+                    <button onclick="kontoAufladen(50)">50€</button>
+                    <button onclick="kontoAufladen(100)">100€</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+          
+          
         <div class="linkes-panel">
             <h2>Regeln:</h2>
             <a>Um spielen zu können müssen sie Geld aufladen und ein gewünschten Geldbetrag Wetten</a>

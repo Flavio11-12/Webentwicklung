@@ -39,6 +39,7 @@ body {
     color: #FFD700;
     text-transform: uppercase;
 }
+
 .header-logo {
     font-size: 2rem;
     color: #00FFFF;
@@ -46,23 +47,38 @@ body {
     font-weight: bold;
 }
 
-.account-container {
+/* Konto & Account Container */
+.Account-container,
+.Konto-container {
     position: relative;
     display: inline-block;
 }
 
-.account-button {
+/* Buttons */
+.account-button,
+.Konto-button {
     font-size: 1.5rem;
     background: transparent;
-    border: 2px solid #FFD700;
-    color: #FFD700;
     padding: 10px 20px;
     border-radius: 10px;
     cursor: pointer;
+    min-width: 150px;
+}
+
+.account-button {
+    border: 2px solid #FFD700;
+    color: #FFD700;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+.Konto-button {
+    border: 2px solid #FFD700;
+    color: #FFD700;
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
 }
 
-.account-menu {
+.account-menu,
+.Konto-menu {
     display: none;
     position: absolute;
     right: 0;
@@ -74,13 +90,20 @@ body {
     z-index: 100;
 }
 
-.account-container:hover .account-menu {
+.Account-container:hover .account-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Konto-container:hover .Konto-menu {
     display: block;
 }
 
-.account-menu p {
-    font-size: 1.2rem;
-    margin: 5px 0;
+.account-menu form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .aufladung-container {
@@ -88,6 +111,11 @@ body {
     display: flex;
     justify-content: center;
     gap: 15px;
+}
+
+.Konto-menu p {
+    font-size: 1.2rem;
+    margin: 5px 0;
 }
 
 h1 {
