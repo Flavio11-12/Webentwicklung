@@ -23,12 +23,7 @@ let einsatzGesetzt = 0;
 zufallsBildAnzeige.innerHTML = `<img src="${bildPfadListe[0]}" width="100">`;
 benutzerWahlBildAnzeige.innerHTML = `<img src="${bildPfadListe[0]}" width="100">`;
 
-// Lade gespeicherte Spielstände
-const gespeicherteDaten = JSON.parse(localStorage.getItem("spielstand"));
-if (gespeicherteDaten) {
-    kontoStand = gespeicherteDaten.konto;
-    verlaufstand = gespeicherteDaten.verlaufe;
-}
+
 aktualisiereAnzeige();
 aktualisiereVerlauf();
 
@@ -37,7 +32,6 @@ function speichereSpielstand() {
         konto: kontoStand,
         verlaufe: verlaufstand
     };
-    localStorage.setItem("spielstand", JSON.stringify(spielstand));
 }
 
 
