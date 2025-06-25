@@ -19,8 +19,6 @@ let verlaufstand = "";
 let kontoStand = 0;
 let einsatzGesetzt = 0;
 
-var i = 0;
-
 zufallsBildAnzeige.innerHTML = `<img src="${bildPfadListe[0]}" width="100">`;
 benutzerWahlBildAnzeige.innerHTML = `<img src="${bildPfadListe[0]}" width="100">`;
 
