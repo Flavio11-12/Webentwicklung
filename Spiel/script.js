@@ -10,6 +10,7 @@ const zufallsBildAnzeige = document.getElementById('image-ergebnis');
 const auszahlungsBetragInput = document.getElementById('auszahlung_input');
 const benutzerWahlBildAnzeige = document.getElementById('image-wahl');
 const verlauf = document.getElementById('Verlauf');
+const accName = document.getElementById('accName');
 
 let benutzerWahlIndex = 0;
 let zufallsErgebnisIndex = 0;
@@ -57,7 +58,10 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   
     if (res.ok) {
       alert(data.message);
-      kontoStand = data.kontostand;
+      accName.innerHTML = username;
+      verlaufstand = "";
+      verlauf.innerHTML = "";
+      kontoStand = data.konto;
       verlaufstand = data.verlauf.map(e => `${e.aktion} ${e.betrag}€<br>`).join('');
       aktualisiereAnzeige();
       aktualisiereVerlauf();
@@ -84,14 +88,41 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   
     if (res.ok) {
       alert(data.message);
-      // Optional: automatisch zurück zur Login-Ansicht wechseln
+      accName.innerHTML = username;
       LoginSwitch();
     } else {
       alert('Fehler: ' + data.message);
     }
   });
   
-  
+async function updateUserData() {
+const username = accName.innerHTML; // Angenommen, der Username ist hier gespeichert
+
+const verlaufArray = verlaufstand
+    .split('<br>')
+    .filter(s => s)
+    .map(eintrag => {
+    const parts = eintrag.split(' ');
+    return {
+        betrag: parseInt(parts[0], 10),
+        aktion: parts.slice(1).join(' ')
+    };
+    });
+
+const res = await fetch('/api/user/update', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+    username,
+    konto: kontoStand,
+    verlauf: verlaufArray
+    })
+});
+
+if (!res.ok) {
+    alert('Fehler beim Speichern des Spielstands auf dem Server.');
+}
+}
 
 function aktualisiereAnzeige() {
     kontoAnzeige.innerHTML = kontoStand + "€";
@@ -113,10 +144,42 @@ function einsatzSetzen(betrag) {
     speichereSpielstand();
 }
 
-function kontoAufladen(betrag) {
+async function kontoAufladen(betrag) {
     kontoStand += betrag;
     aktualisiereAnzeige();
     speichereSpielstand();
+
+    const username = accName.innerHTML;
+    if (!username) return;  
+
+    const verlaufArray = verlaufstand
+        .split('<br>')
+        .filter(s => s)
+        .map(eintrag => {
+            const parts = eintrag.split(' ');
+            return {
+                betrag: parseInt(parts[0], 10),
+                aktion: parts.slice(1).join(' ')
+            };
+        });
+
+    try {
+        const res = await fetch('/api/user/update', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                username,
+                konto: kontoStand,
+                verlauf: verlaufArray
+            })
+        });
+
+        if (!res.ok) {
+            alert('Fehler beim Speichern des Kontostands auf dem Server.');
+        }
+    } catch (error) {
+        alert('Fehler bei der Verbindung zum Server.');
+    }
 }
 
 function Spielverlauf(auswertung, spielstand){
@@ -149,6 +212,7 @@ function spielStarten() {
         zufallsErgebnisIndex = Math.floor(Math.random() * bildPfadListe.length);
         zufallsBildAnzeige.innerHTML = `<img src="${bildPfadListe[zufallsErgebnisIndex]}" width="100">`;
         spielAuswerten();
+        updateUserData();
         auswahlButtonsContainer.style.display = "block";
         spielErgebnisText.style.display = "block";
         aktualisiereAnzeige();

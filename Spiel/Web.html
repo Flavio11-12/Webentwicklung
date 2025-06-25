@@ -17,12 +17,13 @@
           
             <div class="header-right">
               <div class="Account-container">
-                <button class="account-button">👤▼</button>
+                <button class="account-button">👤<a id="accName"></a>▼</button>
                 <div class="account-menu">
                   <form id="loginForm">
                     <input id="loginName" type="text" placeholder="Benutzername" required>
                     <input id="loginPasswort" type="password" placeholder="Passwort" required>
                     <button type="submit">Anmelden</button>
+                    <button id="Abmelden">Abmelden</button>
                     <a onclick="LoginSwitch()">Kein Account? Registriere dich hier!</a>
                   </form>
                   <form id="RegistrierenForm" style="display: none;">
